@@ -23,6 +23,7 @@ Or install it yourself as:
 ## Usage
 
  ### 判断数据库列表定义是否完整
+
     $ rake db:menuList model=定义的模型名
       如：  rake db:menuList model=user
 
