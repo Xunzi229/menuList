@@ -21,6 +21,7 @@ namespace :db do
       p eval(model).take
     end
     if model_attribute(model)
+
     else
       @not_method.each do |x|
         puts "缺失属性#{x}"
@@ -44,17 +45,16 @@ end
 
 #判断该model是否有一下的属性
 def model_attribute model
-  method_s = [:le_f,:ri_g,:par_e,:chi_l]
+  method_s = [:le_id,:ri_id,:par_id,:chi_ids,:bro_ids]
   @not_method = []
-  0.step(3) do |x|
+  book = true
+  0.step(method_s.length-1) do |x|
     begin
-      eval(model).new.method_s[x]
+      eval(model).new.send(method_s[x])
     rescue
       @not_method << method_s[x]
-      if x == 3
-        return false
-      end
+      book = false
     end
   end
-  return true
+  return book
 end
